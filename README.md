@@ -49,8 +49,10 @@ The project is divided in the following sections:
 
 <a name="project_organisation"></a>
 ## Getting started:
+
 Project Organization
 ------------
+
 ├── app
 │   ├── run.py------------------------# python file used to run the flask app
 │   └── templates
