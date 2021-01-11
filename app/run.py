@@ -1,9 +1,10 @@
 import json
 import plotly
 import pandas as pd
-from nltk.corpus import stopwords
+
 from nltk.stem import WordNetLemmatizer
 from nltk.tokenize import word_tokenize
+
 from flask import Flask
 from flask import render_template, request, jsonify
 from plotly.graph_objs import Bar
@@ -14,27 +15,13 @@ from sqlalchemy import create_engine
 app = Flask(__name__)
 
 def tokenize(text):
-    """
-    Tokenizes text data
-    Args:
-    text str: Messages as text data
-    Returns:
-    # clean_words list: Processed text after normalizing, tokenizing and lemmatizing
-    """
-    # Normalize text
-    text = re.sub(r"[^a-zA-Z0-9]", " ", text.lower())
 
-    # Tokenize text
     tokens = word_tokenize(text)
+    lemmatizer = WordNetLemmatizer()
 
-    # Remove stop words
-    stop_words = stopwords.words('english)')
-    words = [word for word in words if word not in stop_words]
-
-    # Extract root form of words
-    clean_words = []
-    for word in words:
-        clean_tok = lemmatizer.lemmatize(tok,pos='v').lower().strip()
+    clean_tokens = []
+    for tok in tokens:
+        clean_tok = lemmatizer.lemmatize(tok).lower().strip()
         clean_tokens.append(clean_tok)
 
     return clean_tokens
