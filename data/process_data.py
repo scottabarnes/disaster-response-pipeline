@@ -40,6 +40,9 @@ def clean_data(df):
     df.drop(columns=['categories'],inplace=True)
     df = pd.concat([df,categories],axis=1)
     df.drop_duplicates(inplace=True)
+    # 3. Remove non binary values
+    for category in category_colnames:
+        df = df[(df[category] == 1) | (df[category] ==0)]
     return df
 
 def save_data(df, database_filepath):
