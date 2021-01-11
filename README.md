@@ -53,17 +53,18 @@ The project is divided in the following sections:
 Project Organization
 ------------
 
-├── app
-│   ├── run.py------------------------# python file used to run the flask app
-│   └── templates
-│       ├── go.html-------------------# classification result page on app
-│       └── master.html---------------# main page on app
-├── data
-│   ├── DisasterResponse.db-----------# database used for saving and loading data
-│   ├── disaster_categories.csv-------# input data - message labels  
-│   ├── disaster_messages.csv---------# input data - messages
-│   └── process_data.py---------------# python file used to load and clean data
-├── screenshots-----------------------# screenshots used in README
-├── models
-│   └── train_classifier.py-----------# builds and trains model used in web app
-├── notebooks-------------------------# notebooks used prior to web app build
+    ├── app
+    │   ├── run.py------------------------# python file used to run the flask app
+    │   └── templates
+    │       ├── go.html-------------------# classification result page on app
+    │       └── master.html---------------# main page on app
+    ├── data
+    │   ├── DisasterResponse.db-----------# database used for saving and loading data
+    │   ├── disaster_categories.csv-------# input data - message labels  
+    │   ├── disaster_messages.csv---------# input data - messages
+    │   └── process_data.py---------------# python file used to load and clean data
+    ├── screenshots-----------------------# screenshots used in README
+    ├── models
+    │   └── train_classifier.py-----------# builds and trains model used in web app
+
+    
