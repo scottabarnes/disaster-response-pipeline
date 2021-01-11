@@ -1,5 +1,3 @@
-# TODO - add in doctring
-# TODO - add in assertion statements
 
 import sys
 import pandas as pd
@@ -8,13 +6,27 @@ import sqlalchemy
 from sqlalchemy import create_engine
 
 def load_data(messages_filepath, categories_filepath):
+    """
+    Loads and merges data
+    Args:
+    messages_filepath str: Filepath to messages dataset
+    categories_filepath str: Filepath to categories dataset
+    Returns:
+    df DataFrame: Joined dataframe
+    """
     messages = pd.read_csv(messages_filepath)
     categories = pd.read_csv(categories_filepath)
     df = messages.merge(categories,how='inner',on='id')
     return df
 
 def clean_data(df):
-    # 1. Create category col df with values
+    """
+    Cleans raw input data for model training
+    Args:
+    df DataFrame: joined dataframe for cleaning
+    Returns:
+    df DataFrame: cleaned dataframe for model training
+    """    # 1. Create category col df with values
     categories = df['categories'].str.split(';',expand=True)
     category_colnames = [e[:-2] for e in list(categories.iloc[1])]
     categories.columns = category_colnames
@@ -29,11 +41,16 @@ def clean_data(df):
     df = pd.concat([df,categories],axis=1)
     df.drop_duplicates(inplace=True)
     return df
-    ### TODO - add in assertion statements
 
-def save_data(df, database_filename):
-    engine = create_engine('sqlite:///' + database_filename)
-    df.to_sql('Messages', engine, index=False)
+def save_data(df, database_filepath):
+    """
+    Saves cleaned dataset to database for subsequent loading
+    Args:
+    df DataFrame: Cleaned dataframe to be saved down
+    database_filename str: Filepath to save database
+    """
+    engine = create_engine('sqlite:///' + database_filepath)
+    df.to_sql('Messages', engine, index=False, if_exists='replace')
 
 
 def main():
@@ -61,6 +78,6 @@ def main():
               'disaster_messages.csv disaster_categories.csv '\
               'DisasterResponse.db')
 
-
+# run
 if __name__ == '__main__':
     main()

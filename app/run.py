@@ -15,7 +15,13 @@ from sqlalchemy import create_engine
 app = Flask(__name__)
 
 def tokenize(text):
-
+    """
+    Tokenizes text data
+    Args:
+    text str: Messages as text data
+    Returns:
+    # clean_tokens list: Processed text after normalizing, tokenizing and lemmatizing
+    """
     tokens = word_tokenize(text)
     lemmatizer = WordNetLemmatizer()
 
@@ -27,11 +33,11 @@ def tokenize(text):
     return clean_tokens
 
 # load data
-engine = create_engine('sqlite:///../data/DisasterResponse.db')
+engine = create_engine('sqlite:///data/DisasterResponse.db')
 df = pd.read_sql_table('Messages', engine)
 
 # load model
-model = joblib.load("../models/classifier.pkl")
+model = joblib.load("models/classifier.pkl")
 
 
 # index webpage displays cool visuals and receives user input text for model
@@ -44,6 +50,8 @@ def index():
     genre_counts = df.groupby('genre').count()['message']
     genre_names = list(genre_counts.index)
 
+    category_names = df.iloc[:,4:].columns
+    category_counts = (df.iloc[:,4:] != 0).sum().values
     # create visuals
     # TODO: Below is an example - modify to create your own visuals
     graphs = [
@@ -64,7 +72,27 @@ def index():
                     'title': "Genre"
                 }
             }
-        }
+        },
+            {
+                'data': [
+                    Bar(
+                        x=category_names,
+                        y=category_counts
+                    )
+                ],
+
+                'layout': {
+                    'title': 'Distribution of Message Categories',
+                    'yaxis': {
+                        'title': "Count"
+                    },
+                    'xaxis': {
+                        'title': "Category",
+                        'tickangle':45
+                    }
+                }
+            }
+
     ]
 
     # encode plotly graphs in JSON
@@ -94,7 +122,7 @@ def go():
 
 
 def main():
-    app.run(host='0.0.0.0', port=3001, debug=True)
+    app.run(host='127.0.0.1', port=3000, debug=False)
 
 
 if __name__ == '__main__':
