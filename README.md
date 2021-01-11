@@ -38,13 +38,11 @@ The project is divided in the following sections:
       `python data/process_data.py data/disaster_messages.csv data/disaster_categories.csv data/DisasterResponse.db`
 
 2. Running the ML Pipeline:
-    - From the project directory run
-    `python models/train_classifier.py data/DisasterResponse.db models/classifier.pkl`
+    - From the project directory run `python models/train_classifier.py data/DisasterResponse.db models/classifier.pkl`
 
 3. Starting the Flask Web App:
-  - From the project directory run  
-    `python /app/run.py`
-  - Go to http://0.0.0.0:3001/
+  - From the project directory run `python /app/run.py`
+  - Go to http://127.0.0.1:3000/
 
 
 <a name="project_organisation"></a>
@@ -66,5 +64,3 @@ Project Organization
     ├── screenshots-----------------------# screenshots used in README
     ├── models
     │   └── train_classifier.py-----------# builds and trains model used in web app
-
-    
