@@ -10,7 +10,7 @@
 <a name="descripton"></a>
 ## Description
 
-This Project is part of Data Science Nanodegree Program by Udacity in collaboration with Figure Eight. The objective of the project was to build a tool that would classify disaster messages into categories - e.g. "water", "fire" or "food" to aid responses. The dataset used to train the model contains pre-labelled request messages sent during a natural disaster.
+This Project is part of Data Science Nanodegree Program by Udacity in collaboration with Figure Eight. The objective of the project was to build a tool that would classify disaster messages into categories - e.g. "water", "fire" or "food", to aid responses. The dataset used to train the model contains pre-labelled request messages sent during a natural disaster.
 
 The project is divided in the following sections:
 
@@ -34,8 +34,7 @@ The project is divided in the following sections:
 <a name="getting_started"></a>
 ## Getting started:
 1. Running the ETL Pipeline:
-      - From the project directory run:
-      `python data/process_data.py data/disaster_messages.csv data/disaster_categories.csv data/DisasterResponse.db`
+      - From the project directory run `python data/process_data.py data/disaster_messages.csv data/disaster_categories.csv data/DisasterResponse.db`
 
 2. Running the ML Pipeline:
     - From the project directory run `python models/train_classifier.py data/DisasterResponse.db models/classifier.pkl`
@@ -46,7 +45,7 @@ The project is divided in the following sections:
 
 
 <a name="project_organisation"></a>
-## Getting started:
+## Project organisation:
 
 Project Organization
 ------------
