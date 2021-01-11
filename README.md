@@ -65,4 +65,3 @@ Project Organization
 ├── models
 │   └── train_classifier.py-----------# builds and trains model used in web app
 ├── notebooks-------------------------# notebooks used prior to web app build
---------
