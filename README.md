@@ -31,14 +31,15 @@ The Project is divided in the following Sections:
 - allows user to send request messages to model and receive response in real time
 
 ## Getting started:
-1. Running the ETL pipeline:
+1. Running the ETL Pipeline:
       - From the project directory run:
       `python data/process_data.py data/disaster_messages.csv data/disaster_categories.csv data/DisasterResponse.db`
-2. Running the ML pipeline:
+
+2. Running the ML Pipeline:
     - From the project directory run
     `python models/train_classifier.py data/DisasterResponse.db models/classifier.pkl`
 
-3. Starting the flask web app:
+3. Starting the Flask Web App:
   - From the project directory run  
     `python run.py`
   - Go to http://0.0.0.0:3001/
